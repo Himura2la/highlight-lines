@@ -6,12 +6,21 @@ const baseDir = '.'
 const servedPaths = [ 'example', 'lib' ]
 const rootDir = servedPaths[0]
 const rootFile = 'index.html'
+const port = 8125
 
 http.createServer(function (request, response) {
     const requestedPathParts = request.url.split('/')
-    const filePath = !requestedPathParts[1]                      ? path.join(baseDir, rootDir, rootFile)
-                   : servedPaths.includes(requestedPathParts[1]) ? path.join(...[baseDir, ...requestedPathParts])
-                                                                 : path.join(...[baseDir, rootDir, ...requestedPathParts])
+    if (!requestedPathParts[1]) {
+        response.writeHead(301, { 'Location' : '/' + rootDir + '/' + rootFile });
+        response.end();
+        return
+    }
+    if (!servedPaths.includes(requestedPathParts[1])) {
+        response.writeHead(403)
+        response.end()
+        return
+    }
+    const filePath = path.join(...[ baseDir, ...requestedPathParts ])
     const ext = String(path.extname(filePath)).toLowerCase()
     const contentType = mimeTypes[ext] || 'application/octet-stream'
     console.log('request', request.url, '<---', filePath, '[', contentType, ']')
@@ -20,11 +29,11 @@ http.createServer(function (request, response) {
         if (error) {
             if(error.code == 'ENOENT') {
                 response.writeHead(404)
-                response.end(content, 'utf-8')
+                response.end()
             }
             else {
                 response.writeHead(500)
-                response.end('Sorry, check with the site admin for error: ' + error.code + ' ..\n')
+                response.end()
             }
         }
         else {
@@ -32,9 +41,9 @@ http.createServer(function (request, response) {
             response.end(content, 'utf-8')
         }
     })
-}).listen(8125)
+}).listen(port)
 
-console.log('Server running at http://127.0.0.1:8125/')
+console.log('Server running at http://127.0.0.1:' + port)
 const mimeTypes = {
     '.html': 'text/html',
     '.js': 'text/javascript',

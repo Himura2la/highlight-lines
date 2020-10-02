@@ -1,0 +1,7 @@
+code {
+    white-space: pre-wrap;
+}
+code .highlight-block {
+    display: inline-block;
+    background-color: wheat;
+}
