@@ -1,0 +1,11 @@
+{
+  "name": "highlight-code-lines",
+  "version": "1.0.0",
+  "description": "Highlight one or more lines in a code snippet",
+  "main": "lib\\highlight-lines.js",
+  "scripts": {
+    "dev": "node .\\example-server.js"
+  },
+  "author": "vladislav.glagolev@devexpress.com",
+  "license": "MIT"
+}
