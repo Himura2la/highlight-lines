@@ -11,8 +11,8 @@ const port = 8125
 http.createServer(function (request, response) {
     const requestedPathParts = request.url.split('/')
     if (!requestedPathParts[1]) {
-        response.writeHead(301, { 'Location' : '/' + rootDir + '/' + rootFile });
-        response.end();
+        response.writeHead(301, { 'Location' : '/' + rootDir + '/' + rootFile })
+        response.end()
         return
     }
     if (!servedPaths.includes(requestedPathParts[1])) {
