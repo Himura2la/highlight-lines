@@ -5,7 +5,7 @@ A small Vanilla JS library used to highlight one or more lines of a code snippet
 ## How to use
 
 ```js
-import { highlightLines } from 'path/to/lib/highlight-lines'
+import { highlightLines } from 'path/to/lib/highlight-lines.js'
 
 const codeBlock = document.getElementsById('highlight-my-lines')
 const ranges = [1,[3,5]]
