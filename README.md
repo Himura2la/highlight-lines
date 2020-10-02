@@ -20,3 +20,4 @@ This will highlight the following lines: 1, 3, 4, and 5.
 npm run dev
 ```
 
+[Open example on GitHub Pages](https://himura2la.github.io/highlight-lines/example/index.html)

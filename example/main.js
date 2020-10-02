@@ -1,4 +1,4 @@
-import { highlightLines } from '../lib/highlight-lines'
+import { highlightLines } from '../lib/highlight-lines.js'
 
 document.addEventListener("DOMContentLoaded", () => {
     for (const code of document.getElementsByTagName('code')) {
